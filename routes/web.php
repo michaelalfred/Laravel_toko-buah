@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\BarangController;
+use App\Http\Controllers\admin\TransaksiController;
+use App\Http\Controllers\admin\LaporanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +28,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
     Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+    Route::get('/transaki', [TransaksiController::class,'create'])->name('transaksi.create');
+    Route::post('/transaki/post', [TransaksiController::class,'store'])->name('transaksi.post');
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    // Route::resource('transaksi', TransaksiController::class)->except(['show']);
 });
+
 
 Auth::routes();
 

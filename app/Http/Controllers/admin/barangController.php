@@ -117,5 +117,30 @@ class barangController extends Controller
             return redirect()->route('barang.index')->with('error', 'Failed to add barang. Please try again.');
         }
     }
+    public function destroy($id)
+    {
+        // Start a database transaction
+        DB::beginTransaction();
+
+        try {
+            // Find the Barang record
+            $barang = Barang::findOrFail($id);
+
+            // Delete the Barang record
+            $barang->delete();
+
+            // Commit the transaction
+            DB::commit();
+
+            // Redirect with success message
+            return redirect()->route('barang.index')->with('success', 'Barang deleted successfully');
+        } catch (\Exception $e) {
+            // An error occurred, rollback the transaction
+            DB::rollBack();
+
+            // Redirect with error message
+            return redirect()->route('barang.index')->with('error', 'Failed to delete barang. Please try again.');
+        }
+    }
    
 }
