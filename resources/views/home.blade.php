@@ -17,6 +17,7 @@
                     {{ __('You are logged in!') }}
 
                     <!-- Button to navigate to /admin/barang route -->
+                    <br>
                     <a href="{{ route('barang.index') }}" class="btn btn-primary">
                         Go to Barang
                     </a>

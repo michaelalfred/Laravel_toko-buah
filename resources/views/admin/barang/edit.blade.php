@@ -4,7 +4,15 @@
 
 @section('content')
     <div style="max-width: 600px; margin: 0 auto;">
-        <h2 style="text-align: center;">Edit Barang</h2>
+        <h2 style="text-align: center;
+                    font-size: 35px;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 100px;
+                    color: #fff;
+                    user-select: none;
+                    border-radius: 15px 15px 0 0;
+                    background: linear-gradient(-135deg, #c850c0, #4158d0);">Edit Barang</h2>
 
         <!-- Display validation errors, if any -->
         @if ($errors->any())

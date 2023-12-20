@@ -1,10 +1,36 @@
 <!-- resources/views/admin/laporan/index.blade.php -->
+<style>
+    table.table-bordered th,
+    table.table-bordered td {
+        border: 1px solid #ddd; /* Warna dan ketebalan outline */
+        padding: 8px; /* Ruang dalam sel */
+        text-align: left; /* Penataan teks dalam sel */
+    }
 
+    table.table-bordered th {
+        background-color: #f2f2f2; /* Warna latar belakang header */
+    }
+
+    table.table-bordered {
+        border-collapse: collapse; /* Menggabungkan batas tabel */
+        width: 100%; /* Lebar tabel */
+        margin-bottom: 20px; /* Jarak antara tabel dan elemen lainnya */
+    }
+</style>
 @extends('layouts.app')
 
 @section('content')
     <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="text-align: center; margin-bottom: 20px;">Laporan Transaksi</h2>
+        <h2 style="text-align: center; 
+                    margin-bottom: 20px;
+                    font-size: 35px;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 100px;
+                    color: #fff;
+                    user-select: none;
+                    border-radius: 15px 15px 0 0;
+                    background: linear-gradient(-135deg, #c850c0, #4158d0);">Laporan Transaksi</h2>
 
         <!-- Canvas for Chart.js -->
         <canvas id="myBarChart" width="400" height="400"></canvas>

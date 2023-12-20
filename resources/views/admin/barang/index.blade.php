@@ -1,10 +1,37 @@
 <!-- resources/views/admin/barang/index.blade.php -->
+<style>
+    table.table-bordered th,
+    table.table-bordered td {
+        border: 1px solid #ddd; /* Warna dan ketebalan outline */
+        padding: 8px; /* Ruang dalam sel */
+        text-align: left; /* Penataan teks dalam sel */
+    }
+
+    table.table-bordered th {
+        background-color: #f2f2f2; /* Warna latar belakang header */
+    }
+
+    table.table-bordered {
+        border-collapse: collapse; /* Menggabungkan batas tabel */
+        width: 100%; /* Lebar tabel */
+        margin-bottom: 20px; /* Jarak antara tabel dan elemen lainnya */
+    }
+</style>
 
 @extends('layouts.app')
 
+@section('title', 'Lihat Barang')
+
 @section('content')
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="text-align: center; margin-bottom: 20px;">List Barang</h2>
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="font-size: 35px;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 100px;
+                    color: #fff;
+                    user-select: none;
+                    border-radius: 15px 15px 0 0;
+                    background: linear-gradient(-135deg, #c850c0, #4158d0);">List Barang</h2>
 
         <!-- Display success or error messages, if any -->
         @if(session('success'))
@@ -21,9 +48,9 @@
 
         <!-- Button to add new barang -->
         <div style="margin-bottom: 20px;">
-    <a href="{{ route('barang.create') }}" class="btn btn-primary">Add New Barang</a>
-    <a href="{{ route('transaksi.create') }}" class="btn btn-primary">Transaksi</a>
-    <a href="{{ route('laporan.index') }}" class="btn btn-primary">Laporan</a>
+        <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
+        <a href="{{ route('transaksi.create') }}" class="btn btn-primary">Transaksi</a>
+        <a href="{{ route('laporan.index') }}" class="btn btn-primary">Laporan</a>
 </div>
 
 
