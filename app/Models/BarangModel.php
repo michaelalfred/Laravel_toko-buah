@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Barang extends Model
+class BarangModel extends Model
 {
 
     protected $table = 'barang';
@@ -14,6 +14,6 @@ class Barang extends Model
     // For example, if a Barang can have many Transaksi:
     public function transaksis()
     {
-        return $this->hasMany(Transaksi::class, 'id_item');
+        return $this->hasMany(TransaksiModel::class, 'id_item');
     }
 }

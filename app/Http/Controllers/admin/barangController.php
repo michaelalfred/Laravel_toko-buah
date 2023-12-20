@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Barang; // Import the Barang model
+use App\Models\BarangModel; // Import the Barang model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +12,7 @@ class barangController extends Controller
     public function index()
     {
         // Paginate the results instead of using all()
-        $barang = Barang::paginate(10); // Adjust the number per page as needed
+        $barang = BarangModel::paginate(10); // Adjust the number per page as needed
 
         // Pass the $barang variable to the view
         return view('admin.barang.index', compact('barang'));
@@ -20,7 +20,7 @@ class barangController extends Controller
     public function indexBarang()
     {
         // Paginate the results instead of using all()
-        $barang = Barang::paginate(10); // Adjust the number per page as needed
+        $barang = BarangModel::paginate(10); // Adjust the number per page as needed
 
         // Pass the $barang variable to the view
         return view('admin.barang.create', compact('barang'));
@@ -28,7 +28,7 @@ class barangController extends Controller
     public function edit($id)
     {
         // Find the barang with the given ID
-        $barang = Barang::findOrFail($id);
+        $barang = BarangModel::findOrFail($id);
 
         // Pass the $barang variable to the view
         return view('admin.barang.edit', compact('barang'));
@@ -51,7 +51,7 @@ class barangController extends Controller
 
         try {
             // Find the Barang record
-            $barang = Barang::findOrFail($id);
+            $barang = BarangModel::findOrFail($id);
 
             // Update the Barang record
             $barang->update([
@@ -95,7 +95,7 @@ class barangController extends Controller
 
         try {
             // Create a new barang record
-            Barang::create([
+            BarangModel::create([
                 'nama_barang' => $request->input('nama_barang'),
                 'harga_beli' => $request->input('harga_beli'),
                 'harga_jual' => $request->input('harga_jual'),
@@ -124,7 +124,7 @@ class barangController extends Controller
 
         try {
             // Find the Barang record
-            $barang = Barang::findOrFail($id);
+            $barang = BarangModel::findOrFail($id);
 
             // Delete the Barang record
             $barang->delete();

@@ -5,14 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Barang;
-use App\Models\Transaksi;
+use App\Models\BarangModel;
+use App\Models\TransaksiModel;
 class TransaksiController extends Controller
 {
     public function create()
 {
     // Get all barang for dropdown
-    $barangList = Barang::pluck('nama_barang', 'id');
+    $barangList = BarangModel::pluck('nama_barang', 'id');
 
     return view('admin.transaksi.create', compact('barangList'));
 }
@@ -30,7 +30,7 @@ class TransaksiController extends Controller
         ]);
 
         // Check if kuantitas is greater than jumlah_kg
-        $barang = Barang::findOrFail($request->id_item);
+        $barang = BarangModel::findOrFail($request->id_item);
         if ($request->kuantitas > $barang->jumlah_kg) {
             return redirect()
                 ->route('transaksi.create')
@@ -42,7 +42,7 @@ class TransaksiController extends Controller
 
         try {
             // Create a new transaksi record
-            $transaksi = Transaksi::create($request->all());
+            $transaksi = TransaksiModel::create($request->all());
 
             // Update the corresponding barang record
             $barang->jumlah_kg -= $request->kuantitas;
