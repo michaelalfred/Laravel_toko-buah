@@ -34,12 +34,13 @@
             <input type="text" name="nama_barang" value="{{ $barang->nama_barang }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
             <br>
 
+            <!-- Display the latest historical price information -->
             <label for="harga_beli" style="display: block; margin-bottom: 5px;">Harga Beli:</label>
-            <input type="number" name="harga_beli" value="{{ $barang->harga_beli }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <input type="number" name="harga_beli" value="{{ $barang->historiHarga->last()->harga_beli }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
             <br>
 
             <label for="harga_jual" style="display: block; margin-bottom: 5px;">Harga Jual:</label>
-            <input type="number" name="harga_jual" value="{{ $barang->harga_jual }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <input type="number" name="harga_jual" value="{{ $barang->historiHarga->last()->harga_jual }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
             <br>
 
             <label for="jumlah_kg" style="display: block; margin-bottom: 5px;">Jumlah Kg:</label>
@@ -47,7 +48,7 @@
             <br>
 
             <label for="tanggal_masuk" style="display: block; margin-bottom: 5px;">Tanggal Masuk:</label>
-            <input type="date" name="tanggal_masuk" value="{{ $barang->tanggal_masuk }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <input type="date" name="tanggal_masuk" value="{{ $barang->historiHarga->last()->tanggal_masuk }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
             <br>
 
             <label for="tanggal_kadaluarsa" style="display: block; margin-bottom: 5px;">Tanggal Kadaluarsa:</label>

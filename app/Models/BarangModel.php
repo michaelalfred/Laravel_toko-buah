@@ -16,4 +16,9 @@ class BarangModel extends Model
     {
         return $this->hasMany(TransaksiModel::class, 'id_item');
     }
+
+    public function historiHarga()
+    {
+        return $this->hasMany(HistoriHarga::class, 'id_buah');
+    }
 }

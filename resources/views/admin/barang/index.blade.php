@@ -51,6 +51,7 @@
         <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
         <a href="{{ route('transaksi.create') }}" class="btn btn-primary">Transaksi</a>
         <a href="{{ route('laporan.index') }}" class="btn btn-primary">Laporan</a>
+        <a href="{{ route('histori_harga.index') }}" class="btn btn-primary">Histori Harga</a>
 </div>
 
 
@@ -73,17 +74,17 @@
                 @foreach($barang as $item)
                     <tr>
                         <td>{{ $item->nama_barang }}</td>
-                        <td>{{ $item->harga_beli }}</td>
-                        <td>{{ $item->harga_jual }}</td>
+                        <td>{{ $item->historiHarga->last()->harga_beli }}</td>
+                        <td>{{ $item->historiHarga->last()->harga_jual }}</td>
                         <td>{{ $item->jumlah_kg }}</td>
-                        <td>{{ $item->tanggal_masuk }}</td>
+                        <td>{{ $item->historiHarga->last()->tanggal_masuk }}</td>
                         <td>{{ $item->tanggal_kadaluarsa }}</td>
                         <!-- Add other table cells as needed -->
                         <td>
                             <a href="{{ route('barang.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                             <!-- Add delete functionality as needed -->
-                             <!-- Form for handling delete -->
-                             <form action="{{ route('barang.destroy', ['id' => $item->id]) }}" method="post" style="display: inline;">
+                            <!-- Form for handling delete -->
+                            <form action="{{ route('barang.destroy', ['id' => $item->id]) }}" method="post" style="display: inline;">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this barang?')">Delete</button>
@@ -93,6 +94,7 @@
                 @endforeach
             </tbody>
         </table>
+
 
         <!-- Add pagination links if necessary -->
         {{ $barang->links() }}

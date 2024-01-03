@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BarangModel; // Import the Barang model
+use App\Models\HistoriHarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,6 +17,11 @@ class barangController extends Controller
 
         // Pass the $barang variable to the view
         return view('admin.barang.index', compact('barang'));
+    }
+
+    public function historiHarga()
+    {
+        return $this->hasMany(HistoriHarga::class, 'id_buah');
     }
     public function indexBarang()
     {

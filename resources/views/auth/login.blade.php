@@ -138,6 +138,11 @@
         form .signup-link a:hover{
         text-decoration: underline;
         }
+        .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        }
         form .content {
                 display: flex;
                 width: 100%;
@@ -173,10 +178,20 @@
                     <input type="email" name="email" value="{{ old('email') }}" required>
                     <label>Email Address</label>
                 </div>
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
                 <div class="field">
                     <input type="password" name="password" required>
                     <label>Password</label>
                 </div>
+                @error('password')
+                    <span class="error-message" role="alert">
+                        {{ $message }}
+                    </span>
+                @enderror
                 <div class="content">
                     <div class="checkbox">
                         <input type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }}>

@@ -31,10 +31,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/transaksi', [TransaksiController::class,'create'])->name('transaksi.create');
     Route::post('/transaki/post', [TransaksiController::class,'store'])->name('transaksi.post');
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/histori-harga', [LaporanController::class,'showHistoriHarga'])->name('histori_harga.index');
+
     // Route::resource('transaksi', TransaksiController::class)->except(['show']);
 });
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [BarangController::class, 'index'])->name('home');
