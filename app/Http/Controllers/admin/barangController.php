@@ -63,11 +63,16 @@ class barangController extends Controller
             // Update the Barang record
             $barang->update([
                 'nama_barang' => $request->input('nama_barang'),
+                'jumlah_kg' => $request->input('jumlah_kg'),
+                'tanggal_kadaluarsa' => $request->input('tanggal_kadaluarsa'),
+            ]);
+
+            // Update the corresponding histori_harga record
+            $historiHarga = $barang->historiHarga->last();
+            $historiHarga->update([
                 'harga_beli' => $request->input('harga_beli'),
                 'harga_jual' => $request->input('harga_jual'),
-                'jumlah_kg' => $request->input('jumlah_kg'),
                 'tanggal_masuk' => $request->input('tanggal_masuk'),
-                'tanggal_kadaluarsa' => $request->input('tanggal_kadaluarsa'),
             ]);
 
             // Commit the transaction
@@ -83,7 +88,6 @@ class barangController extends Controller
             return redirect()->route('barang.index')->with('error', 'Failed to update barang. Please try again.');
         }
     }
-
 
     public function store(Request $request)
     {

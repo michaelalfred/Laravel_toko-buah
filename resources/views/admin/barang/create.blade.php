@@ -39,7 +39,7 @@
             <input type="number" name="harga_jual" required class="form-control">
             <br>
             <label for="jumlah_kg">Jumlah Kg:</label>
-            <input type="number" name="jumlah_kg" required class="form-control">
+            <input type="text" name="jumlah_kg" required class="form-control" inputmode="numeric" pattern="[0-9]*[.,]?[0-9]+([.,][0-9]+)?">
             <br>
             <label for="tanggal_masuk">Tanggal Masuk:</label>
             <input type="date" name="tanggal_masuk" required class="form-control">
