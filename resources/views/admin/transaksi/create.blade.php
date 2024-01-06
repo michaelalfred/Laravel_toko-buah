@@ -39,10 +39,8 @@
             <input type="text" name="nama" class="form-control" required>
             <br>
 
-            <label for="total_harga">Total Harga:</label>
-            <input type="number" name="total_harga" class="form-control" required>
-            <br>
-
+            <!-- Remove the input field for total_harga as it will be calculated in the controller -->
+            
             <label for="tanggal_transaksi">Tanggal Transaksi:</label>
             <input type="date" name="tanggal_transaksi" class="form-control" required>
             <br>

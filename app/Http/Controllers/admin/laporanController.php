@@ -12,7 +12,7 @@ class laporanController extends Controller
     public function index()
     {
         // Fetch transactions data
-        $transaksis = TransaksiModel::all();
+        $transaksis = TransaksiModel::with('barang')->get();
 
         // Pass data to the view
         return view('admin.laporan.index', compact('transaksis'));
@@ -24,4 +24,5 @@ class laporanController extends Controller
 
         return view('admin.laporan.histori_harga', compact('historiHarga'));
     }
+    
 }

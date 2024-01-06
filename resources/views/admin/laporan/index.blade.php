@@ -39,20 +39,22 @@
             <thead>
                 <tr>
                     <th>Nama</th>
+                    <th>Nama Barang</th>
                     <th>Total Harga</th>
                     <th>Tanggal Transaksi</th>
                     <th>Kuantitas</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($transaksis as $transaksi)
-                    <tr>
-                        <td>{{ $transaksi->nama }}</td>
-                        <td>{{ $transaksi->total_harga }}</td>
-                        <td>{{ $transaksi->tanggal_transaksi }}</td>
-                        <td>{{ $transaksi->kuantitas }}</td>
-                    </tr>
-                @endforeach
+            @foreach ($transaksis as $transaksi)
+            <tr>
+                <td>{{ $transaksi->nama }}</td>
+                <td>{{ $transaksi->barang->nama_barang }}</td>
+                <td>{{ $transaksi->total_harga }}</td>
+                <td>{{ $transaksi->tanggal_transaksi }}</td>
+                <td>{{ $transaksi->kuantitas }}</td>
+            </tr>
+        @endforeach
             </tbody>
         </table>
     </div>

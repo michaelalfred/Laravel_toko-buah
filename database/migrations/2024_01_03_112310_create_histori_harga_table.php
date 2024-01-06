@@ -17,6 +17,7 @@ return new class extends Migration
         $table->decimal('harga_beli');
         $table->decimal('harga_jual');
         $table->date('tanggal_masuk');
+        $table->unsignedBigInteger('id_buah')->default(0);
         // Add other necessary columns
         $table->timestamps();
     });

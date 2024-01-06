@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use App\Models\BarangModel; // Import the Barang model
 use App\Models\HistoriHarga;
 use Illuminate\Http\Request;
@@ -101,13 +102,18 @@ class barangController extends Controller
 
         try {
             // Create a new barang record
-            BarangModel::create([
+            $barang = BarangModel::create([
                 'nama_barang' => $request->input('nama_barang'),
+                'jumlah_kg' => $request->input('jumlah_kg'),
+                'tanggal_kadaluarsa' => $request->input('tanggal_kadaluarsa'),
+            ]);
+
+            // Create a new histori_harga record for the added barang
+            HistoriHarga::create([
+                'id_buah' => $barang->id, // Use the id from the newly created barang
                 'harga_beli' => $request->input('harga_beli'),
                 'harga_jual' => $request->input('harga_jual'),
-                'jumlah_kg' => $request->input('jumlah_kg'),
                 'tanggal_masuk' => $request->input('tanggal_masuk'),
-                'tanggal_kadaluarsa' => $request->input('tanggal_kadaluarsa'),
             ]);
 
             // Commit the transaction
@@ -118,6 +124,9 @@ class barangController extends Controller
         } catch (\Exception $e) {
             // An error occurred, rollback the transaction
             DB::rollBack();
+
+            // Log or print the exception message for further debugging
+            Log::error("Exception: " . $e->getMessage());
 
             // Redirect with error message
             return redirect()->route('barang.index')->with('error', 'Failed to add barang. Please try again.');

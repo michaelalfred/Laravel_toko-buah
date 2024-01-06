@@ -9,6 +9,7 @@ class HistoriHarga extends Model
     protected $table = 'histori_harga'; // Set the table name if it's different from the default
 
     protected $fillable = [
+        'id_buah',
         'harga_beli',
         'harga_jual',
         'tanggal_masuk',
