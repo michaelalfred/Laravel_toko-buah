@@ -8,6 +8,7 @@ class BarangModel extends Model
 {
 
     protected $table = 'barang';
+    protected $primaryKey = 'id';
     protected $fillable = ['nama_barang', 'harga_beli', 'harga_jual', 'jumlah_kg', 'tanggal_masuk', 'tanggal_kadaluarsa'];
 
     // Define any relationships here, if needed
@@ -19,6 +20,6 @@ class BarangModel extends Model
 
     public function historiHarga()
     {
-        return $this->hasMany(HistoriHarga::class, 'id_buah');
+        return $this->hasMany(HistoriHarga::class, 'id');
     }
 }

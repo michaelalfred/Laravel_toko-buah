@@ -69,7 +69,8 @@ class barangController extends Controller
 
             // Update the corresponding histori_harga record
             $historiHarga = $barang->historiHarga->last();
-            $historiHarga->update([
+            $historiHarga->create([
+                'id' => $barang->id,
                 'harga_beli' => $request->input('harga_beli'),
                 'harga_jual' => $request->input('harga_jual'),
                 'tanggal_masuk' => $request->input('tanggal_masuk'),
@@ -114,7 +115,7 @@ class barangController extends Controller
 
             // Create a new histori_harga record for the added barang
             HistoriHarga::create([
-                'id_buah' => $barang->id, // Use the id from the newly created barang
+                'id' => $barang->id, // Use the id from the newly created barang
                 'harga_beli' => $request->input('harga_beli'),
                 'harga_jual' => $request->input('harga_jual'),
                 'tanggal_masuk' => $request->input('tanggal_masuk'),
@@ -134,31 +135,6 @@ class barangController extends Controller
 
             // Redirect with error message
             return redirect()->route('barang.index')->with('error', 'Failed to add barang. Please try again.');
-        }
-    }
-    public function destroy($id)
-    {
-        // Start a database transaction
-        DB::beginTransaction();
-
-        try {
-            // Find the Barang record
-            $barang = BarangModel::findOrFail($id);
-
-            // Delete the Barang record
-            $barang->delete();
-
-            // Commit the transaction
-            DB::commit();
-
-            // Redirect with success message
-            return redirect()->route('barang.index')->with('success', 'Barang deleted successfully');
-        } catch (\Exception $e) {
-            // An error occurred, rollback the transaction
-            DB::rollBack();
-
-            // Redirect with error message
-            return redirect()->route('barang.index')->with('error', 'Failed to delete barang. Please try again.');
         }
     }
    

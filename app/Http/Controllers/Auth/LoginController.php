@@ -36,4 +36,5 @@ class LoginController extends Controller
             'email' => [trans('auth.failed')],
         ]);
     }
+
 }

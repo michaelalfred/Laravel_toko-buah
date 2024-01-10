@@ -40,7 +40,7 @@ class TransaksiController extends Controller
         }
 
         // Retrieve the latest histori_harga record for the barang
-        $latestHistoriHarga = HistoriHarga::where('id_buah', $request->id_item)
+        $latestHistoriHarga = HistoriHarga::where('id', $request->id_item)
             ->latest('created_at')
             ->first();
 

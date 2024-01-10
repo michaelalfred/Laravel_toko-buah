@@ -48,12 +48,14 @@
 
         <!-- Button to add new barang -->
         <div style="margin-bottom: 20px;">
-        <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
-        <a href="{{ route('transaksi.create') }}" class="btn btn-primary">Transaksi</a>
-        <a href="{{ route('laporan.index') }}" class="btn btn-primary">Laporan</a>
-        <a href="{{ route('histori_harga.index') }}" class="btn btn-primary">Histori Harga</a>
-</div>
-
+            <a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah Barang</a>
+            <a href="{{ route('transaksi.create') }}" class="btn btn-primary">Transaksi</a>
+            @if(auth()->user()->role === 'admin')
+                <!-- Only show these buttons for admin users -->
+                <a href="{{ route('laporan.index') }}" class="btn btn-primary">Laporan</a>
+                <a href="{{ route('histori_harga.index') }}" class="btn btn-primary">Histori Harga</a>
+            @endif
+        </div>
 
         <!-- Display the list of barang -->
         <table class="table table-bordered">
@@ -81,20 +83,14 @@
                         <td>{{ $item->tanggal_kadaluarsa }}</td>
                         <!-- Add other table cells as needed -->
                         <td>
-                            <a href="{{ route('barang.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ route('barang.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-warning btn-block">Edit</a>
                             <!-- Add delete functionality as needed -->
                             <!-- Form for handling delete -->
-                            <form action="{{ route('barang.destroy', ['id' => $item->id]) }}" method="post" style="display: inline;">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this barang?')">Delete</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-
 
         <!-- Add pagination links if necessary -->
         {{ $barang->links() }}

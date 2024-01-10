@@ -9,7 +9,7 @@ class HistoriHarga extends Model
     protected $table = 'histori_harga'; // Set the table name if it's different from the default
 
     protected $fillable = [
-        'id_buah',
+        'id',
         'harga_beli',
         'harga_jual',
         'tanggal_masuk',
@@ -19,6 +19,6 @@ class HistoriHarga extends Model
     // Relationships
     public function barang()
     {
-        return $this->belongsTo(BarangModel::class, 'id_buah');
+        return $this->belongsTo(BarangModel::class, 'id');
     }
 }

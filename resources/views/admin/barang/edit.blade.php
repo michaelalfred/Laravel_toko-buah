@@ -44,7 +44,7 @@
             <br>
 
             <label for="jumlah_kg" style="display: block; margin-bottom: 5px;">Jumlah Kg:</label>
-            <input type="number" name="jumlah_kg" value="{{ $barang->jumlah_kg }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <input type="text" name="jumlah_kg" value="{{ $barang->jumlah_kg }}" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
             <br>
 
             <label for="tanggal_masuk" style="display: block; margin-bottom: 5px;">Tanggal Masuk:</label>

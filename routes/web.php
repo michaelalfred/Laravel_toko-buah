@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('inventaris')->group(function () {
 
     // Route for "barang" controller
     Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
@@ -39,4 +39,4 @@ Route::prefix('admin')->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [BarangController::class, 'index'])->name('home');
+Route::get('/home', [BarangController::class, 'index'])->name('admin.dashboard');

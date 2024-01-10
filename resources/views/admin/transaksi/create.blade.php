@@ -35,14 +35,14 @@
             </select>
             <br>
 
+            <!-- Use the authenticated user's name as the default value for the "nama" input -->
             <label for="nama">Nama:</label>
-            <input type="text" name="nama" class="form-control" required>
+            <input type="text" name="nama" class="form-control" value="{{ auth()->user()->name }}" readonly>
             <br>
 
-            <!-- Remove the input field for total_harga as it will be calculated in the controller -->
-            
+            <!-- Set the default value to the current date -->
             <label for="tanggal_transaksi">Tanggal Transaksi:</label>
-            <input type="date" name="tanggal_transaksi" class="form-control" required>
+            <input type="date" name="tanggal_transaksi" class="form-control" value="{{ now()->toDateString() }}" required>
             <br>
 
             <label for="kuantitas">Kuantitas:</label>
